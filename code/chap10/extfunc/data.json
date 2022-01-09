@@ -1,0 +1,21 @@
+{
+  "api": {
+    "/users/{user_id}/profile" : {
+      "GET": ["profile.read"],
+      "PUT": ["profile.read", "profile.update"]
+    },
+    "/users" : {
+      "GET": ["user.read"],
+      "PUT": ["user.read", "user.update"]
+    },
+    "/about" : {
+      "GET" : []
+    }
+  },
+  "operator_permission" : {
+    "oper1" : ["profile"],
+    "oper2" : ["profile.read"],
+    "oper3" : ["profile.update"],    
+    "useroper": ["user.read", "profile.read"]
+  }
+}

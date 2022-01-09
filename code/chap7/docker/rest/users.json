@@ -1,0 +1,10 @@
+{
+    "users" : {
+        "bob": {
+            "role":"manager"
+        },
+        "alice": {
+            "role":"staff"
+        }
+    }
+}

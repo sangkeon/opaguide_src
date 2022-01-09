@@ -1,0 +1,41 @@
+services:
+  example:
+    url: http://localhost:8080/policy/v1
+    response_header_timeout_seconds: 5
+
+lables:
+  region: prod
+  depart: dev1
+  service: example
+
+bundles:
+  example:
+    service: example
+    resource: bundles/example/bundle.tar.gz
+    persist: true
+    polling:
+      min_delay_seconds: 60
+      max_delay_seconds: 120
+    signing:
+      keyid: global_key
+
+keys:
+  global_key:
+    algorithm: RS512
+    key: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxtXx9HIydGa90/0SIlyi
+      G6uJS3xTZqr+IfIA1YZrgdhpIJSIW4Wj19R56X6tzr5AMw4Z/FfcR7E+5/9Q30y9
+      8bvCDMM+58RPIhL4fyHLZeLR2ysMHgXt3aQ1epTKJA+AP2ndQu7nzYJ/ZgIzQkGO
+      3AR9IfYva5D9x9d5KxsBS6S5FyAfT9zspWtN9OO2Vu8jH9G/vWnLagYD8hXfTiaa
+      U+ujkB0OSlOOWDVbXPO0Aw/z7GKyc9Zg/TF2Vq8/SJjw0j1FlgJCC+tXBx8SYXuQ
+      TxsjpMHAGiWg5slt+FpvSQEcZjPlvUN+tnvsUxfnVpyMDmxKMvdRtzAy0BaL/wpe
+      GQIDAQAB
+      -----END PUBLIC KEY-----
+
+decision_logs:
+  console: true
+status:
+  console: true
+
+

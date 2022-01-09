@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: goodns1
+  labels:
+    gatekeeper: gatekeeper1

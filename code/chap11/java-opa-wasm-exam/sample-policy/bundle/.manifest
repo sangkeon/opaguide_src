@@ -1,0 +1,1 @@
+{"revision":"","roots":[""],"wasm":[{"entrypoint":"opa/wasm/test/allowed","module":"/policy.wasm"}]}

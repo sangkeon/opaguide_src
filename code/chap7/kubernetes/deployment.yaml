@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa
+  labels:
+    app: opa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opa
+  template:
+    metadata:
+      labels:
+        app: opa
+      name: opa
+    spec:
+      containers:
+      - name: opa
+        image: openpolicyagent/opa:0.25.0-dev
+        ports:
+        - name: http
+          containerPort: 8181
+        args:
+        - "run"
+        - "--ignore=.*"
+        - "-s"
+        - "-c"
+        - "/opaconf/opaconf.yaml"
+        volumeMounts:
+        - readOnly: true
+          mountPath: /opaconf
+          name: opaconf
+      volumes:
+      - name: opaconf
+        configMap:
+          name: opaconf

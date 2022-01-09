@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: goodns2
+  labels:
+    gatekeeper: gw2
+    environment: production

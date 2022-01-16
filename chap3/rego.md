@@ -63,7 +63,7 @@ Let's take a closer look at the grammar of the Rego module.
 ### Module
 The top unit of Rego is the module. One Rego file can be viewed as one module. The railing diagram of the module shows Figure 3-3.
 
-![Structure of the Module](img/fig_3-3.png)
+<img src="img/fig_3-3.png" width="50%" />
 
 Figure 3-3. Structure of the Module
 
@@ -73,7 +73,7 @@ The modules in OPA are similar to modules in general-purpose languages such as G
 Package
 Let's look at the package declaration this time. A package declaration consists of a keyword package and a name that can be referenced by other modules, as shown in Figure 3-4.
 
-![Structure of Package Declaration](img/fig_3-4.png)
+<img src="img/fig_3-4.png" width="33%" />
 
 Figure 3-4. Structure of Package Declaration
 
@@ -94,7 +94,7 @@ Declared packages are used to isolate different modules when loading the content
 ### Import
 Imports are used to import and use modules from other Rego files. Import has the form of import <package name> and is used to include the contents of modules in other packages in the module. In the Rego grammar, the import keyword is represented as followed by a package, as shown in Figure 3-5, but it would be accurate to see a name (reference) that can refer to the package rather than to the package itself.
 
-![Structure of the Import](img/fig_3-5.png)
+<img src="img/fig_3-5.png" width="50%" />
 
 Figure 3-5. Structure of the Import
 
@@ -118,7 +118,7 @@ Imports are primarily used to load modules that store policy data.
 ### Policy
 A policy consists of an arbitrary number of rules, as shown in Figure 3-6. In extreme cases, you may not have any rules, but it is not practical to create a module that does not have any rules, so this case is unlikely to be seen. For the purpose of a placeholder that pre-books the package names of parts that users can redefine and use in the future, it seems that there can be a file consisting only of comments without rules.
 
-![Structure of Policies](img/fig_3-6.png)
+<img src="img/fig_3-6.png" width="25%" />
 
 Figure 3-6. Structure of Policies
 
@@ -127,14 +127,14 @@ The OPA official document describes the rule before the module. However, the rea
 ### Term
 Before we take a closer look at the rules, let's look at the term, a basic element of the Rego language. Terms can be seen as basic data structures representing data in the Rego language. The term consists of a comprehensive set of references, variables, scalar values, arrays, objects, sets, etc., array comprehensions, object comprehensions, and set comprehensions, as shown in Figure 3-7. First, let's look at the basic data structures except for variables and references.
 
-![Structure of Terms](img/fig_3-7.png)
+<img src="img/fig_3-7.png" width="33%"/>
 
 Figure 3-7. Structure of Terms
 
 ### Scala Value
 Rego's scalar value represents a simple value that is not grouped into complex values and can be of string, number, boolean, or null type. Both strings and numbers are identical to the JSON type (i.e., JavaScript type). The structure of scalar values is shown in Figure 3-8.
 
-![Structure of scalar values](img/fig_3-8.png)
+<img src="img/fig_3-8.png" width="33%" />
 
 Figure 3-8. Structure of scalar values
  
@@ -153,7 +153,7 @@ Since the number has the same type as the Java script, there is no type distinct
 #### String
 There are two types of strings in Rego, a regular string and a raw string, as shown in Figure 3–9.
 
-![Structure of the string](img/fig_3-9.png)
+<img src="img/fig_3-9.png" width="33%" />
 
 Figure 3-9. Structure of the string
 
@@ -165,7 +165,7 @@ A regular string is a string surrounded by "" (double quotes). \t (tab), \n (new
 
 A raw string is a string surrounded by a `(backtick, located to the left of the number key 1 on the keyboard), as shown in Figure 3-10. Unlike regular  strings, it is displayed as it is except for ` itself. For example, \t represents a tab-special character in a normal string, but remains \ and t characters in the raw string.
 
-![Structure of the raw string](img/fig_3-10.png)
+<img src="img/fig_3-10.png" width="50%" />
 
 Figure 3-10. Structure of the raw string
 
@@ -182,11 +182,11 @@ A composite value has the form of an object, array, set, etc.
 #### Object
 First of all, objects are easy when you think of JSON objects. The structure of the object is repeated by separating the object entries into , between {}, as shown in Figure 3-11. Object entries are in the form of a <key>:<value> pair, as shown in Figure 3-12.
 
-![Structure of the objects](img/fig_3-11.png)
+<img src="img/fig_3-11.png" width="50%" />
 
 Figure 3-11. Structure of the objects
 
-![Structure of the object items](img/fig_3-12.png)
+<img src="img/fig_3-12.png" width="50%" />
 
 Figure 3-12. Structure of object items
 
@@ -194,7 +194,7 @@ In Rego's EBNF grammar, at least one pair of <key>:<value> should exist, but in 
 
 The exact grammar of the object is expected to be  object ::= '{' ( object-item ( ',' object-item )* )? '}' in Figure 3-13 rather than object ::= '{' object-item ( ',' object-item )* '}' in Figure 3-11. In addition, {} can be mistaken for representing an empty set, which in Rego is represented as a set(). The name of the type can be found by calling the type_name function described in Chapter 4, which returns "object".
 
-![Accurate structure of objects](img/fig_3-13.png)
+<img src="img/fig_3-13.png" width="50%" />
  
 Figure 3-13. Accurate  Structure of objects
 
@@ -232,7 +232,7 @@ The equality between objects can be compared to each other. The following compar
 #### Array
 Arrays are ordered by a set of terms, such as values and references, and can be referenced by an index. An array is represented by elements surrounded by [] and separated by ,.
 
-![Structure of an array](img/fig_3-14.png)
+<img src="img/fig_3-14.png" width="50%" />
 
 Figure 3-14. Structure of an array
  
@@ -252,14 +252,14 @@ empty_array := [ ]
  
 This appears to be an error in EBNF grammar posted on the OPA website. Also, the correct grammar would be array ::= '[' ( term ( ',' term )* )?  as shown in Figure 3-15, not  array ::= '[' ( term ( ',' term )* )? ']' as shown in Figure 3-14.
 
-![Accurate structure of an array](img/fig_3-15.png)
+<img src="img/fig_3-15.png" width="50%" />
 
 Figure 3-15. Accurate structure of an array
 
 #### Set
 A set is a complex value consisting only of terms without a key. Unlike arrays, there is no order and only one duplicate value is stored. There are two sets, empty set and non empty set, as shown in Figure 3-16.
 
-![Structure of the set](img/fig_3-16.png)
+<img src="img/fig_3-16.png" width="50%" />
 
 Figure 3-16. Structure of the set
 
@@ -269,11 +269,11 @@ An empty set is represented by set(), not by {}, as shown in Figure 3-17. Since 
 empty_set := set()
 ```
 
-![Structure of an empty set](img/fig_3-17.png)
+<img src="img/fig_3-17.png" width="33%" />
 
 Figure 3-17. Structure of an empty set
 
-![Structure of a non-empty set](img/fig_3-18.png)
+<img src="img/fig_3-18.png" width="50%" />
 
 Figure 3-18. Structure of a non-empty set
 
@@ -298,7 +298,7 @@ You will occasionally encounter comprehension when learning programming language
 #### Object Comprehension
 An object comprehension represents the rule that the <key> : <value> that constitutes the object must satisfy. The structure of the object comprehensive expression is shown in Figure 3-19 and has the form of { <key> : <value> | <rule for generating keys and values> }.
 
-![Structure of the object comprehension](img/fig_3-19.png)
+<img src="img/fig_3-19.png" width="50%" />
 
 Figure 3-19. Structure of object comprehension
 
@@ -329,7 +329,7 @@ First, we created an array called fruits with three items: banana, apple, and pi
 #### Set Comprehension
 A set comprehension declares a set by expressing the rules that the set must satisfy. The structure of the set comprehension is shown in Figure 3-20 and has the form of { <items> | <rules for generating items> }.
 
-![Structure of the set comprehension](img/fig_3-20.png)
+<img src="img/fig_3-20.png" width="50%" />
 
 Figure 3-20. Structure of the set comprehension
 
@@ -374,7 +374,7 @@ want (type): string
 #### Array Comprehension
 An array comprehension declares an array by expressing the rules that the array must satisfy. The structure of the array comprehensive expression is shown in Figure 3-21, and has the form of [ <items> | <rules for generating items> ].
 
-![Structure of the array comprehension](img/fig_3-21.png)
+<img src="img/fig_3-21.png" width="50%" />
 
 Figure 3-21. Structure of the array comprehension
  
@@ -420,7 +420,7 @@ In REPL, the input is treated as an assignment to the input variable, which will
 
 The name of the variable has the same format as Figure 3-22. In other words, it starts with an alphabet (including both upper and lower case letters) or an underscore (_) and repeats the underscore, number, and alphabetic characters.
 
-![Format of variable names](img/fig_3-22.png)
+<img src="img/fig_3-22.png" width="50%" />
 
 Figure 3-22. Format of variable names
 
@@ -462,7 +462,7 @@ Note that variables described in sections [Introduction/Rego/Variables] (https:/
 ### Reference
 References provide a means of accessing the hierarchical structure when variables, arrays, objects, function call results, etc. have hierarchical structure, as shown in Figure 3-23.
 
-![Structure of the reference](img/fig_3-23.png)
+<img src="img/fig_3-23.png" width="66%" />
 
 Figure 3-23. Structure of the reference
 
@@ -470,19 +470,19 @@ The things that can be the top hierarchies of references are variables, arrays, 
 
 The reference argument can access the sub-elements of the target through two methods, using . and naming variables between [ ], as shown in Figure 3-24.
 
-![Structure of the reference argument](img/fig_3-24.png)
+<img src="img/fig_3-24.png" width="33%" />
 
 Figure 3-24. Structure of the reference argument
 
 The approach using . is shown in Figure 3-25. It can then be referenced via a key that satisfies the variable name format.
 
-![Reference using .](img/fig_3-25.png)
+<img src="img/fig_3-25.png" width="33%" />
 
 Figure 3-25. Reference using .
 
 Approaches using [ ] are referenced using scalar values, variables, arrays, objects, sets, and _ between [ ], as shown in Figure 3-26.
  
-![Reference using []](img/fig_3-26.png)
+<img src="img/fig_3-26.png" width="50%" />
 
 Figure 3-26. Reference using [ ]
 
@@ -564,7 +564,7 @@ It is no exaggeration to say that the declaration of rules is everything of Rego
 
 The structure of the rules is shown in Figure 3-27. At the beginning of the rule, the default keyword is optionally placed, and a rule head exists. There may be several rule bodies behind the rule head, and no rule body may exist. Rules, such as value assignment and function, are separated by the form of the rule head, which is described in detail by examining by rule form.
 
-![Structure of the rule](img/fig_3-27.png)
+<img src="img/fig_3-27.png" width="50%" />
 
 Figure 3-27. Structure of the rule
 
@@ -573,7 +573,7 @@ The most basic rule of the Rego language is assignment of values and has the str
 
 Value assignment is a form of rule in which only rule heads exist without the default keyword and rule body. Value allocation has a syntax of <variable name> := <base element>. For example, hello := the form "world".
 
-![Structure of the value assignment](img/fig_3-28.png)
+<img src="img/fig_3-28.png" width="80%" />
 
 Figure 3-28. Structure of the value assignment
 
@@ -661,13 +661,13 @@ The <rule name> = <rule value> part is the rule head, and the rule literals surr
 
 If we look at the structure of the complete rules we have looked at so far, it is shown in Figure 3-29.
 
-![Structure of the complete rule](img/fig_3-29.png)
+<img src="img/fig_3-29.png" width="80%" />
 
 Figure 3-29. Structure of the complete rule
 
 A complete rule has a rule body, and the structure of the rule body is shown in Figure 3-30.
 
-![Structure of the rule bodies](img/fig_3-30.png)
+<img src="img/fig_3-30.png" width="50%" />
 
 Figure 3-30. Structure of the rule bodies
 
@@ -779,7 +779,7 @@ default <rule name> = <value>
 
 The structure of the default statement is shown in Figure 3-31.
 
-![Structure of default statement](img/fig_3-31.png)
+<img src="img/fig_3-31.png" width="80%" />
 
 Figure 3-31. Structure of default statement
  
@@ -827,7 +827,7 @@ A Partial Rule is a rule that assigns values that conform to the rules set in th
 
 After the rule name in the variable name format, there is a base element surrounded by [], which results in a set of basic elements that make the rule body true.
 
-![Rule head structure for partial rules that generate sets](img/fig_3-32.png)
+<img src="img/fig_3-32.png" width="80%" />
 
 Figure 3-32. Rule head structure for partial rules that generate sets
 
@@ -847,7 +847,7 @@ Rule 'nonapplefruits' defined in package repl. Type 'show' to see rules.
 
 Partial rules that create objects have rule heads as shown in Figure 3-33. We can see that the = <base element> part is attached to the back of the [ ] part compared to the case of generating a set. The element in [ ] relates to the part of the object's attribute key, and the <base element> after = corresponds to the part of the value for that key.
 
-![Rule head structure of partial rules that create objects](img/fig_3-33.png)
+<img src="img/fig_3-33.png" width="80%" />
 
 Figure 3-33. Rule head structure of partial rules that create objects
 
@@ -878,7 +878,7 @@ A function is also a type of rule, and it has the following form.
 
 Since the function is also a rule, the structure of the rule body is the same as the other rules, and the structure of the rule head is shown in Figure 3-34. Grammatical features alone suggest that a rule has a list of rule arguments separated by , surrounded by a variable name format function name followed by ( ). A function without any rule factor is also possible, which is also expressed as ( ).
 
-![Rule head structure of the function](img/fig_3-34.png)
+<img src="img/fig_3-34.png" width="80%" />
 
 Figure 3-34. Rule head structure of the function
 
@@ -938,7 +938,7 @@ If values are directly used as arguments, lookup tables and others can be implem
 ## Literals
 A look at the structure of the literal used to write rules in the rule body is shown in Figure 3-35.
 
-![Structure of the literals](img/fig_3-35.png)
+<img src="img/fig_3-35.png" width="50%" />
 
 Figure 3-35. Structure of the literals
 
@@ -949,7 +949,7 @@ Some statements are used to explicitly declare variables that are used locally w
 
 The structure of some statement is shown in Figure 3-36. The "some" statement declares a comma-separated list of variable names after the "some" keyword. Since variables with that name are declarations of local variables, there is no particular complexity.
 
-![Structure of some statements](img/fig_3-36.png)
+<img src="img/fig_3-36.png" width="33%" />
  
 Figure 3-36. Structure of some statements
 
@@ -985,7 +985,7 @@ When tested in REPL, the value of find_apple is undefined. Since the index is de
 ### With Statement 
 The with statement is used in the syntax to override input or data with specific data. The with statement is usually used when writing unit tests, and its structure is shown in Figure 3-37.
 
-![Structure of with statements](img/fig_3-37.png)
+<img src="img/fig_3-37.png" width="50%" />
 
 Figure 3-37. Structure of with statements
 
@@ -1002,13 +1002,13 @@ The with statement will be examined in more detail when writing test codes in la
 ### Expression
 The structure of the expression is shown in Figure 3-38. An expression can be a term, a function call, or an expression containing an infix operator.
 
-![Structure of the expression](img/fig_3-38.png)
+<img src="img/fig_3-38.png" width="33%" />
 
 Figure 3-38. Structure of the expression
 
 Let's look at the expression for function call, since we've already looked at the term earlier. The structure of the expression for function  is shown in Figure 3-39. As expected, it is in the form of a function name (an argument of the term, ...). 
 
-![Structure of the expression of function call](img/fig_3-39.png)
+<img src="img/fig_3-39.png" width="80%" />
 
 Figure 3-39. Structure of the expression of function call
 
@@ -1058,14 +1058,14 @@ applenotinfruits { not appleinfruits }
 ### Expression with Infix Operator
 The expression with infix operator is in the form of <basic element> = <basic element> <basic element> or <basic element> <modal operator> <basic element> and its structure is shown in Figure 3-40.
 
-![Structure of the infix operator expression](img/fig_3-40.png)
+<img src="img/fig_3-40.png" width="50%" />
 
 Figure 3-40. Structure of the infix operator expression
 
  
 In Rego, there exists three infix operators: comparison operators, arithmetic operators, and set operators, as shown in Figure 3-41. A bin-operator may seem like an operator for logic, but it is actually an operator for a set.
 
-![Structure of the infix operator](img/fig_3-41.png)
+<img src="img/fig_3-41.png" width="33%" />
 
 Figure 3-41. Structure of the infix operator
  
@@ -1083,20 +1083,20 @@ The structure of the comparison operators is shown in Figure 3-42, and each oper
 
 Table 3-1. Rego Comparison Operators
 
-![Structure of comparison operators](img/fig_3-42.png)
+<img src="img/fig_3-42.png" width="25%" />
 
 Figure 3-42. Structure of comparison operators
  
 The types of arithmetic operators are shown in Figure 3-43. Like a typical programming language, +, -, *, / means addition, subtraction, multiplication, and division, respectively. The % operator that obtains the remainder, commonly called the modulo operator, is not represented in the grammar, but exists
 
-![Structure of arithmetic operators](img/fig_3-42.png)
+<img src="img/fig_3-43.png" width="25%" />
 
 Figure 3-43. Structure of arithmetic operators
 
 ### Set Operator
 The structure of the set operator is shown in Figure 3-44, and supports intersection (&) and join (|) operations. It is not grammatically indicated, but a minus(-) operator for set is also available.
 
-![Structure of the set operator](img/fig_3-44.png)
+<img src="img/fig_3-44.png" width="25%" />
 
 Figure 3-44. Structure of the set operator
 

@@ -10,7 +10,7 @@ Methods for integrating OPA with other systems include running separate servers 
 
 The comparison of each method is shown in Table 7-1.
 
-| Dimension | REST API | Go Lib | WASM (WIP) | 
+| Dimension | REST API | Go Lib | WASM (WIP) |
 | --------- | ---------------------| ---------------------------- | ------------------------- |
 | Evaluation | Fast | Faster | Fastest |
 | Language | Any | Only Go | Any with WASM |
@@ -293,7 +293,7 @@ If you look at the shell that started the OPA server, you can see that the follo
 {"client_addr":"[::1]:61080","level":"info","msg":"Sent response.","req_id":1,"req_method":"POST","req_path":"/v1/data/test/server/rest/allowed","resp_bytes":68,"resp_duration":8.0402,"resp_status":200,"time":"2020-11-05T10:34:01+09:00"}
 ```
 
-We briefly checked how to set up the OPA server. For more information on settings, see the official document at https://www.openpolicyagent.org/docs/latest/configuration/).
+We briefly checked how to set up the OPA server. For more information on settings, see the official document at https://www.openpolicyagent.org/docs/latest/configuration/.
 
 Run OPA server in Docker and Kubernetes Environment
 OPA provides an official docker image, so you can easily float the OPA server using docker or Kubernetes. If you search for openpolicyagent/opa in the docker hub, you can find the OPA docker image as shown in Figure 7-3. If you check the description of the OPA official docker image, the images shown in Table 7-2 are provided.  In the development process, openpolicy agent/opa:latest-debug with a built-in shell for debugging can be used. openpolicyagent/opa:latest-rootless can be used rather than openpolicyagent/opa:latest for application in the production environment. However, it is better to use a rootless image that operates as a server with an account other than root because security check tools can complain of it as a security vulnerability.

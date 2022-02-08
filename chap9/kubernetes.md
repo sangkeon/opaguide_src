@@ -6,7 +6,7 @@
 - Gatekeeper Policy Library
 - Other Tools available in the Kubernetes
  
-OPA provides an OPA gatekeeper for policy management of Kubernetes itself in a Kubernetes environment. Chapter 7 has already looked at how to operate the OPA server in a Kubernetes environment, but what we looked at earlier is not for Kubernetis' policy management, but for application policy management.
+OPA provides an OPA gatekeeper for policy management of Kubernetes itself in a Kubernetes environment. Chapter 7 has already looked at how to operate the OPA server in a Kubernetes environment, but what we looked at earlier is not for Kubernetes' policy management, but for application policy management.
  
 OPA has explained that it is useful for authorization and policy management for microservice environments and cloud-native environments (which can be regarded as a Kubernetes  environment). This chapter describes OPA gatekeepers that enable OPA to be used for managing Kubernetes policies required in CI/CD pipelines and DevOps environments.
  
@@ -74,7 +74,7 @@ replicaset.apps/gatekeeper-audit-54b5f86d57 1 1 1 28s
 replicaset.apps/gatekeeper-controller-manager-5b96bd668 3 3 3 28s
 ```
 
-If you want to delete the OPA gatekeeper from Kubernetis after the test, you can execute the following command.
+If you want to delete the OPA gatekeeper from Kubernetes after the test, you can execute the following command.
 
 ```
 $ kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.3/deploy/gatekeeper.yaml
@@ -121,9 +121,9 @@ The contents are as follows. First of all, the API type of the constraint templa
 
 Then, the name field in the metadata section defines the name of the constraint template. The spec section defines the specification of CRD, and the type of resource (Kind) defined by this CRD is K8sRequiredLabels, that is, the object for this resource is K8sRequiredLabels. And this resource has an attribute named labels, and the data type of the attribute is a string array.
 
-For more information on CRD definitions, visit the official document of Kubernetes at https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/).
+For more information on CRD definitions, visit the official document of Kubernetes at https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/.
  
-In the last targets section, an array of objects with a target field and a rego field may come, and currently one object is used and the target is admisson.k8s.gatekeeper.sh. If a function is added to the gatekeeper, another target type may be added. The rego field contains a policy written in the rego language of OPA.
+In the last targets section, an array of objects with a target field and a rego field may come, and currently one object is used and the target is admission.k8s.gatekeeper.sh. If a function is added to the gatekeeper, another target type may be added. The rego field contains a policy written in the rego language of OPA.
 
 The policy written in Rego is as follows. First of all, the package is designated the same as metadata.name, and one partial rule named violation is defined. The name of the package and partial rule must follow these rules and at least one violation rule must exist. Looking at blogs and examples on the Internet, the name of the partial rule is often named deny, which is the name used in the previous version of the OPA gatekeeper, so you can change it to violation and apply it.
 
@@ -424,7 +424,7 @@ general kustomization.yaml pod-security-policy
 ```
 
 ### General Template
-Table 9-1 shows a list of general templates provided by the current version of the OPA Gatekeeper Library (as of February 2021.
+Table 9-1 shows a list of general templates provided by the current version of the OPA Gatekeeper Library (as of February 2021).
 
 | Template                | Description                                                                         |
 | ----------------------  | ----------------------------------------------------------------------------------- |
@@ -508,7 +508,7 @@ spec:
       }
 ```
 
-The contents are as follows. Two violation partial rules are defined, and regular expression matching is performed by taking the spec.containers and spec.initContainers parts of the Kubernetes object that have passed over, respectively. It is difficult to understand the pattern matching in the regular expression only by looking at the constraints, but it will be easy to understand by looking at the example to be explained soon. If the part is not matched, an error message is generated, assigned to msg, and an object with an msg field is generated in the partial rule.
+The contents are as follows. Two violation partial rules are defined, and regular expression matching is performed by taking the spec.containers and spec.initContainers parts of the Kubernetes object that have passed over, respectively. It is difficult to understand the pattern matching in the regular expression only by looking at the constraints, but it will be easy to understand by looking at the example to be explained soon. If the part is not matched, an error message is generated, assigned to msg, and an object with a msg field is generated in the partial rule.
  
 This time, let's look at constrain.yaml containing constraints.
 
@@ -628,6 +628,7 @@ Table 9-2 shows a list of PSP templates provided by the current version of the O
 | The AppArmor profile used by containers | annotations | apparmor |
 | The seccomp profile used by containers | annotations | seccomp |
 | The sysctl profile used by containers | forbiddenSysctls,allowedUnsafeSysctls | forbidden-sysctls |
+
 [^9]
 
 [^9] Source: https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/pod-security-policy
@@ -732,7 +733,7 @@ spec:
 
 It can be seen that the constraint template refers to the  data.inventory.
 
-Synchronized data is accessible through data.inventory, and cluster-scoped objects can be accessed in the form of data.inventory.cluster][<kind>][<name>], and namespace-scoped objects can be accessed through  data.inventory.namespace[<namespace>][groupVersion][<kind>][<name>].
+Synchronized data is accessible through data.inventory, and cluster-scoped objects can be accessed in the form of data.inventory.cluster[<kind>][<name>], and namespace-scoped objects can be accessed through  data.inventory.namespace[<namespace>][groupVersion][<kind>][<name>].
 
 Since ns, otherappiversoin, and name are not assigned variables in the data.inventory.names[ns][otherappiversion][name], so they are output variables. If the types of "Ingress" are found while traversing data.ineventory.names, ns, otherappiversion, and name variables are assigned  to the namespace, version, name of the found Ingress. And after matching the version with extensions/or networking.k8s.io/ with a regular expression, if the hosts are the same, check for the same object. If it has the same host even though it is not the same object, it generates an error message response object. In the Kubernetes environment, the exercise of uniqingresshost is left up to the readers. 
  
@@ -758,7 +759,7 @@ Note that if the name of the existing configuration object and the metadata sect
 The official OPA gatekeeper document explains one more way to process the namespace exemption, but it can only be applied to the audit log and requires complicated processes such as adding namespace to arguments when executing the OPA gatekeeper container in the pod. Interested readers, check out the contents of https://open-policy-agent.github.io/gatekeeper/website/docs/exempt-namespaces#exempting-namespaces-from-the-gatekeeper-admission-webhook-using---exempt-namespace-flag.
 
 ### Webhook Configuration
-To set up the web hook of the OPA gatekeeper, you can find and modify the part of the YAML file you used for installation(https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.3/deploy/gatekeeper.yaml). Find the section that kind of it is Validating Webbook Configuration, and then apply it using the kubectl apply. The web hook part of the file is as follows.
+To set up the web hook of the OPA gatekeeper, you can find and modify the part of the YAML file you used for installation(https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.3/deploy/gatekeeper.yaml). Find the section that kind of it is Validating Webhook Configuration, and then apply it using the kubectl apply. The web hook part of the file is as follows.
 
 What can be set up in the webhook is that the gatekeeper is set to operate only for CREATE and UPDATE as default values, and add DELETE is required if policies for verification of DELETE are needed to prevent user mistakes, add DELETE. Or changing the timeout value.
 
@@ -1047,7 +1048,7 @@ Kafka can control access to message topics by implementing an authorization plug
  
 To use OPA for kafka authorization, the implementation of the Autroizer interface can transfer the arguments of the authorization request to the OPA REST server as input and return the results to the result of the authorization request again. Of course, rules for authorization must be written and configured on the OPA server, and how to configure the OPA server has already been covered in Chapter 7. Since the result of determining the authorization request of the Authorizer interface is ALLOWED/DENIED, you can return the result to boolean in the OPA rule.
  
-Referring to the OPA official document https://www.openpolicyagent.org/docs/latest/kafka-authorization/, it explains how to link OPA to Kafka. In the official document, a module called kafka-authorizer (https://github.com/open-policy-agent/contrib/tree/master/kafka_authorizer)), not opa-kafka-plugin (https://github.com/Bisnode/opa-kafka-plugin)), is used. The module is provided in a repository where OPA's user contribution codes are collected, and the version is not clearly managed.
+Referring to the [OPA official document](https://www.openpolicyagent.org/docs/latest/kafka-authorization/), it explains how to link OPA to Kafka. In the official document, a module called [kafka-authorizer](https://github.com/open-policy-agent/contrib/tree/master/kafka_authorizer), not [opa-kafka-plugin](https://github.com/Bisnode/opa-kafka-plugin), is used. The module is provided in a repository where OPA's user contribution codes are collected, and the version is not clearly managed.
  
 Either is fine because it is a simple code that receives input from Kafka's Authorizer interface and delivers it to the OPA server, but opa-kafka-plugin is systematically managing the version, so it would be better to use opa-kafka-plugin.
 
@@ -1086,6 +1087,6 @@ Recently, more and more service meshes are applied together than only Kubernetes
 It is too vast to explain the service mesh or Envoy itself, and the current Istio is changing at a rapid pace, so this book does not elaborate further. Interested readers should visit https://github.com/open-policy-agent/opa-envoy-plugin.
  
 ## Summary
-Chapter 9 describes the outline and method of use of OPA gatekeepers that can be applied to Kubernetis' own policies and authority management, not user applications. It also explained how to create and apply constraints templates and constraints for OPA gatekeepers, and how to check audit logs. In addition, we looked at policy libraries available at OPA gatekeepers. Finally, in addition to the OPA gatekeeper, other tools applicable to the Kubernetes-based environment were briefly introduced.
+Chapter 9 describes the outline and method of use of OPA gatekeepers that can be applied to Kubernetes' own policies and authority management, not user applications. It also explained how to create and apply constraints templates and constraints for OPA gatekeepers, and how to check audit logs. In addition, we looked at policy libraries available at OPA gatekeepers. Finally, in addition to the OPA gatekeeper, other tools applicable to the Kubernetes-based environment were briefly introduced.
 
 Chapter 10 examines how to implement built-in functions and expand basic OPA functions.

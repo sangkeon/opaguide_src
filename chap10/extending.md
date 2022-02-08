@@ -8,7 +8,7 @@
  
 OPA can be expanded through embedded functions or plug-in implementations. OPA does not have a plug-in system that dynamically loads modules like programs implemented in Java or other languages, and uses a method of creating a new binary by expanding existing OPA implementations. This seems inevitable because the dynamic module system of the Go language itself is still constrained. However, although there is an inconvenience in building a binary, it can be expanded while maintaining readability and independence of the code by writing a new main function using the existing OPA code itself as if it were a library. Chapter 10 first examines how to create a new binary by adding built-in functions and plug-ins to the existing OPA binary. In addition, since the newly created binary has an added function compared to the existing OPA, version information must be filled out to express this. Therefore, a method of setting version information of a binary to prevent user confusion and enable shape management will also be described.
 
-First, access the OPA’s  Github repository (https://github.com/open-policy-agent/opa)) and open the main.go file of the top directory. If the license and annotation part for the go:generate is omitted, the main contents are as follows.
+First, access the OPA’s Github repository (https://github.com/open-policy-agent/opa) and open the main.go file of the top directory. If the license and annotation part for the go:generate is omitted, the main contents are as follows.
 
 ```
 // Omit the license part.

@@ -250,7 +250,7 @@ Empty arrays can also be declared as follows, but Rego's EBNF grammar states tha
 empty_array := [ ]
 ```
  
-This appears to be an error in EBNF grammar posted on the OPA website. Also, the correct grammar would be array ::= '[' ( term ( ',' term )* )?  as shown in Figure 3-15, not  array ::= '[' ( term ( ',' term )* )? ']' as shown in Figure 3-14.
+This appears to be an error in EBNF grammar posted on the OPA website. Also, the correct grammar would be array ::= '[' ( term ( ',' term )* )? ']'  as shown in Figure 3-15, not  array ::= '[' term ( ',' term )* ']' as shown in Figure 3-14.
 
 <img src="img/fig_3-15.png" width="50%" />
 
@@ -1012,7 +1012,7 @@ Let's look at the expression for function call, since we've already looked at th
 
 Figure 3-39. Structure of the expression of function call
 
-In grammar, a function name is represented as such that only one . can be added between the variable name formats, which in fact appear to be an error in grammar as a function name separated by several .. The OPA official document also recommends distinguishing names from functions in other modules, such as org.example.special_func, to avoid name conflicts when defining functions to be used by other modules.
+In grammar, a function name is represented as such that only one . can be added between the variable name formats, which in fact appear to be an error in grammar as a function name separated by several. The OPA official document also recommends distinguishing names from functions in other modules, such as org.example.special_func, to avoid name conflicts when defining functions to be used by other modules.
 
 An example of a function call is as follows:
 
@@ -1100,7 +1100,7 @@ The structure of the set operator is shown in Figure 3-44, and supports intersec
 
 Figure 3-44. Structure of the set operator
 
-Let's test the set operators. The expected results can be seen by typing in REPL as follows..
+Let's test the set operators. The expected results can be seen by typing in REPL as follows.
 
 ```
 > {1,2,3} & {1,2}
@@ -1139,7 +1139,7 @@ a := 3
 a = 3
 ```
 
-Let's also look at examples of the same comparison and unification operators, and both of the following lines return true..
+Let's also look at examples of the same comparison and unification operators, and both of the following lines return true.
 
 ```
 3 == 3

@@ -145,7 +145,7 @@ The most convenient way to run VSCode is to go from the shell to the parent proj
 If you have run VSCode outside the project directory, simply run File -> Open Directory to open the top directory of the project.
 
 ### Install of vscode-opa plugin
-Let's install the OPA vscode-opa plugin in VSCode. Click the Extensions icon as shown in Figure 2-6, or enter Ctrl + Shift + x (in Mac OS, [Cmd + Shift + x] to open the extension page. The Open Policy Agent can then be entered into the search bar to see the screen shown in Figure 2-6. Let's check if it's a plug-in from Torin Sandall, the core OPA developer, and click Install to install it.
+Let's install the OPA vscode-opa plugin in VSCode. Click the Extensions icon as shown in Figure 2-6, or enter [Ctrl + Shift + x] (in Mac OS, [Cmd + Shift + x]) to open the extension page. The Open Policy Agent can then be entered into the search bar to see the screen shown in Figure 2-6. Let's check if it's a plug-in from Torin Sandall, the core OPA developer, and click Install to install it.
 
 ![Searching vscode-opa Plugins](img/fig_2-6.png)
 
@@ -215,11 +215,11 @@ OPA: Profile Selection command allows performance profiling results to be seen i
 
 Figure 2-14. OPA: Results of OPA: Profile Selection
 
-When the OPA: Toogle Evaluation Coverage command is launched, the Policy Evaluation Coverage section is displayed as shown in Figure 2-15. The OPA: Google Workspace Coverage menu also allows you to turn coverage off and on on a workspace-by-workspace basis. Coverage-related features are more useful when it comes to unit testing.
+When the OPA: Toggle Evaluation Coverage command is launched, the Policy Evaluation Coverage section is displayed as shown in Figure 2-15. The OPA: Google Workspace Coverage menu also allows you to turn coverage off and on a workspace-by-workspace basis. Coverage-related features are more useful when it comes to unit testing.
 
-![Results of OPA: Toogle Evaluation](img/fig_2-15.png)
+![Results of OPA: Toggle Evaluation](img/fig_2-15.png)
 
-Figure 2-15. Results of OPA: Toogle Evaluation
+Figure 2-15. Results of OPA: Toggle Evaluation
  
 Let's run a unit test this time. First, let's write a separate file called hello_test.rego as follows.
  

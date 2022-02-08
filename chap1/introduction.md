@@ -81,7 +81,7 @@ Support for external storage is not implemented by default, so it should be impl
 Although the official document covers a wide range of content, some items lack the detail of documentation. In particular, the explanation of the grammar of the Rego language or the code is rather difficult. In order to implement it in practice, it is often necessary to find and refer to related blogs or source codes.
 
 ## OPA use cases
-A single sentence definition of OPA is a policy engine that defines rules for policies and determines the outcome of applying rules in current inputs and circumstances. Considering what situations these policy engines will be useful in, we can predict what situations OPA is suitable for. In addition, experienced readers of authority or policy will be able to compare OPA and related technologies in the following sections to understand specifically what situations OPA should be applied to. This section describes the various use cases of OPA..
+A single sentence definition of OPA is a policy engine that defines rules for policies and determines the outcome of applying rules in current inputs and circumstances. Considering what situations these policy engines will be useful in, we can predict what situations OPA is suitable for. In addition, experienced readers of authority or policy will be able to compare OPA and related technologies in the following sections to understand specifically what situations OPA should be applied to. This section describes the various use cases of OPA.
 
 ### User Authorization
 A typical policy that applies to almost all systems among the various policies is the management of user privileges. Rights management, which manages what permissions a user has and what permissions a system can perform, is the most important and basic policy. It is a scenario in which OPA takes over the user's authority, desired behavior, etc. and determines acceptance/denial according to defined rules. Because the rules for judgment are fully administered by OPA, other parts of the system can delegate the authority check to the rights management system implemented by OPA.
@@ -180,8 +180,8 @@ OpenID Connect's access tokens and ID tokens are generally JSON processable, so 
 ## Let’s try OPA
 Before installing OPA, try using OPA through OPA Playground. OPA Playground is available at https://play.openpolicyagent.org. If the OPA playground does not work well in a browser, it may be a browser compatibility issue, so use Chrome to access the OPA playground.
 
-![OPA plaground](img/fig_1-3.png)
-Figure 1-3. OPA plaground
+![OPA playground](img/fig_1-3.png)
+Figure 1-3. OPA playground
 
 When accessing the OPA Playground, the Hello World example is loaded by default, as shown in Figure 1-3. Let's follow the example's notes. When the Evaluate button is clicked, the Output window displays the results as shown in Figure 1-4.
 
@@ -195,7 +195,7 @@ Let's take a look at the example first. If you look at the example Hello, World 
 
 In short, a package called play is declared, defines hello and its default value is false, and the rule that determines hello is whether the value read from the message field of the input object matches "world".
 
-Initial input is {"message": "world"}. Therefore, the execution result was {"hello":"true". Let's change the message value in the Input section to something else, such as "world!!!" and then click the Evaluate button again. This would change the resulting value to false, as shown in Figure 1-5.
+Initial input is {"message": "world"}. Therefore, the execution result was {"hello":"true"}. Let's change the message value in the Input section to something else, such as "world!!!" and then click the Evaluate button again. This would change the resulting value to false, as shown in Figure 1-5.
 
 ![Results of execution according to input.message value change](img/fig_1-5.png)
 

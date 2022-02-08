@@ -96,7 +96,7 @@ abs(3)
 ```
 
 ### Create an array of integers in a specific range
-The numbers.range function produces an array of integers in the specified range. Typical range of similar functions has scope from first number to last number - 1. However, numbers.range produces an array containing both the preceding and the latter digits. Also, if the preceding number is greater than the latter, an array is created in reverse order from the preceding to the latter. Because the Rego language used by OPA does not have a direct for loop, the use of nubmers.range to create an integer array can similarly implement the for loop.
+The numbers.range function produces an array of integers in the specified range. Typical range of similar functions has scope from first number to last number - 1. However, numbers.range produces an array containing both the preceding and the latter digits. Also, if the preceding number is greater than the latter, an array is created in reverse order from the preceding to the latter. Because the Rego language used by OPA does not have a direct for loop, the use of numbers.range to create an integer array can similarly implement the for loop.
 
 ```
 # [9, 8, 7, 6, 5, 4, 3, 2, 1]
@@ -117,6 +117,7 @@ OPA supports bit manipulation functions as built-in functions rather than operat
 | bits.xor(x, y)   | Calculate the bit XOR of the two arguments                             |
 | bits.lsh(x, s)   | Shift x to the left by s                                               |
 | bits.rsh(x, s)   | Shift x to the right by s                                              |
+
 
 Table 4-1. Built-in Bit Manipulation Functions provided by OPA.
 
@@ -176,14 +177,15 @@ type_name(func(3))
 ### Type Checking Functions
 OPA provides built-in functions in the form is_<type name> as shown in Table 4-2. These functions return true if an argument is of that type and undefined if not of that type.
 
-| Function         | Description                             |
-| is_number(x)     | Examine whether x is a numeric type     |
-| is_string(x)     | Examine whether x is a string type      |
-| is_boolean(x)    | Examine whether x is a boolean type     |
-| is_array(x)      | Examine whether x is an array type      |
-| is_set(x)        | Examine whether x is a set type         |
-| is_object(x)     | Examine whether x is a objecttype       |
-| is_null(x)       | Examine whether x is null               |
+| Function      | Description                         |
+|---------------|-------------------------------------|
+| is_number(x)  | Examine whether x is a numeric type |
+| is_string(x)  | Examine whether x is a string type  |
+| is_boolean(x) | Examine whether x is a boolean type |
+| is_array(x)   | Examine whether x is an array type  |
+| is_set(x)     | Examine whether x is a set type     |
+| is_object(x)  | Examine whether x is a objecttype   |
+| is_null(x)    | Examine whether x is null           |
 
 Table 4-2. Type Checking Built-in Functions Provided by OPA.
 
@@ -349,6 +351,7 @@ any([])
 OPA provides functions that manipulatest arrays as shown in Table 4-3.
 
 | Function                                  | Description                                                                          |
+| ----------------------------------------- |----------------------------------------------------------------------------------------|
 | array.concat(array1, array2)              | Returns the array that concatenates the two arrays that are passed  to the arguments   |
 | array.slice(array, startIndex, stopIndex) | Returns an array containing components ranging from startIndex to stopIndex(exclusive) |
 
@@ -670,7 +673,7 @@ regex.is_valid("\\o+")
 ```
 
 ### regex.match
-regex.match has the form regex.match (pattern, value) and checks whether a particular string satisfies the corresponding regular expression pattern. For example, [:alpha:]][:al num:]* is a regular expression that begins with an alphabet and can be followed by more than 0 arbitrary numbers or characters. If this expression is examined with regex.match, a1000000 and abcde are matched, but not 9ab0000 or 30000. Regex.match allows you to check whether the data entered is appropriate for the desired format. Examples of uses of regex.match include:
+regex.match has the form regex.match (pattern, value) and checks whether a particular string satisfies the corresponding regular expression pattern. For example, [:alpha:][:al num:]* is a regular expression that begins with an alphabet and can be followed by more than 0 arbitrary numbers or characters. If this expression is examined with regex.match, a1000000 and abcde are matched, but not 9ab0000 or 30000. Regex.match allows you to check whether the data entered is appropriate for the desired format. Examples of uses of regex.match include:
 
 ```
 # true
@@ -939,7 +942,7 @@ JWT can be decoded by calling io.jwt.decode(token). The token argument is in str
 ```
 
 ### JWT Signature Verification
-Functions validating JWT signatures have the form io.jwt.verify_<algorithm> (string, secret_or_certificate). To verify JWT signed by the HS512 algorithm, the function io.jwt.verfiy_hs512 can be used. If the signature algorithm is RS512, io.jwt.verify_rs512 can be used. The secret_or_certificate argument is either a secret code or a string containing the public key, depending on the algorithm. If verification is successful, the true is returned.
+Functions validating JWT signatures have the form io.jwt.verify_<algorithm> (string, secret_or_certificate). To verify JWT signed by the HS512 algorithm, the function io.jwt.verfiy_hs512 can be used. If the signature algorithm is RS512, io.jwt.verify_rs512 can be used. The secret_or_certificate argument is either a secret code or a string containing the public key, depending on the algorithm. If verification is successful, then true is returned.
  
 In the previous example, we validate the JWT generated by the HS512 algorithm, the secret code "secret", and the results are as follows.
 

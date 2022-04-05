@@ -1,8 +1,10 @@
-# OPA Guidebook (2022.1)
+# OPA Guidebook 
+(First published on 2022.1, Last modified on 2022.4)
  
 by Sangkeon Lee (sangkenlee@gmail.com)
 
-
+* Github : https://github.com/sangkeon/opaguide_src
+* Web : https://sangkeon.github.io/opaguide/
 
 This book illustrates how to learn and apply the OPA(Open Policy Agent) for software/service development.
 And this book is an English translation of my book about OPA published in South Korea at the end of July 2021.
@@ -12,7 +14,7 @@ I first saw the OPA when designing authorization for micro services for my custo
 Because OPA is developing so fast, many features such as print function, in keyword(in future.keywords namespace) do not exist when I write. And more and more features will be added very quickly. I realized paper books are limited to quickly reflect the updates of OPA. So I decided to open this book and to keep updating with the OPA community.
  
 If you want to contribute/join this project
-- Join the OPA Slack(https://slack.openpolicyagent.org/) and discuss your idea in the book channel.
+- Join the OPA Slack(https://slack.openpolicyagent.org/) and discuss your idea in the #chit-chat channel.
 - Make a pull request.
 - E-mail your idea to the author.
  

@@ -16,4 +16,4 @@
 - [Chap 9. Using OPA in Kubernetes](chap9/kubernetes.md)
 - [Chap 10. Extending OPA](chap10/extending.md)
 - [Chap 11. OPA and Web Assembly](chap11/wasm.md)
-
+- [Chap 12. Policy Synchronization using OPAL](chap12/opal.md)

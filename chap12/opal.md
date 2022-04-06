@@ -317,7 +317,7 @@ Once the client is running, go to localhost:8181 and verify that the postgres da
 
 What kind of work is needed to add data to the OPA? Since opal_fetcher_postgres is a simple sample implementation, it does not provide updates through polling. Therefore, a data update event must be issued.
 
-![Query Result of "mapping=data.mapping"](img/fig_12-3.png) 
+![Query Result of "mapping=data.mapping"](img/fig_12-4.png) 
 
 Figure 12-4. Query Result of "mapping=data.mapping"
 
